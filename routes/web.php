@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdminControllers;
+use App\Http\Controllers\KamarControllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,13 +27,23 @@ Route::get('/', function(){
     return view ('home');
 })->name('home');
 
-Route::middleware('role:admin')->get('/dashboard', [AdminControllers::class, 'index'])->name('admin.dashboard');
+Route::middleware('role:admin')->get('admin/kamar/dashboard', [KamarControllers::class, 'index'])->name('admin/kamar/dashboard');
 
-Route::get('/admin/create',[AdminControllers::class, 'create'])->name('admin.create');
-Route::post('/admin/store',[AdminControllers::class, 'store']);
+Route::get('/admin/kamar/create',[KamarControllers::class, 'create'])->name('admin/kamar/create');
+Route::post('/admin/kamar/store',[KamarControllers::class, 'store']);
 
-Route::get('/admin/edit/{id}',[AdminControllers::class, 'edit'])->name('admin.edit');
-Route::post('/admin/update/{id}',[AdminControllers::class, 'update']);
+Route::get('/admin/kamar/edit/{id}',[KamarControllers::class, 'edit'])->name('admin/kamar/edit');
+Route::post('/admin/kamar/update/{id}',[KamarControllers::class, 'update']);
+Route::get('/admin/kamar/hapus/{id}',[KamarControllers::class, 'delete']);
+
+Route::get('admin/fkamar/dashboard', [FkamarControllers::class, 'index'])->name('admin/fkamar/dashboard');
+
+Route::get('/admin/fkamar/create',[FkamarControllers::class, 'create'])->name('admin/fkamar/create');
+Route::post('/admin/fkamar/store',[FkamarControllers::class, 'store']);
+
+Route::get('/admin/fkamar/edit/{id}',[FkamarControllers::class, 'edit'])->name('admin/fkamar/edit');
+Route::post('/admin/fkamar/update/{id}',[FkamarControllers::class, 'update']);
+Route::get('/admin/fkamar/hapus/{id}',[FkamarControllers::class, 'delete']);
 
 
 Route::middleware('role:resepsionis')->get('/dashboard_resepsionis', function(){

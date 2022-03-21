@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class AdminControllers extends Controller
+class FkamarControllers extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class AdminControllers extends Controller
     	$kamar = DB::table('kamar')->get();
  
     	// mengirim data pegawai ke view index
-    	return view('admin.dashboard',['kamar' => $kamar]);
+    	return view('admin/kamar/dashboard',['kamar' => $kamar]);
     }
 
     /**
@@ -29,7 +29,7 @@ class AdminControllers extends Controller
     public function create()
     {
         // memanggil view tambah
-	return view('admin.create');
+	return view('admin/kamar/create');
     }
 
     /**
@@ -46,7 +46,7 @@ class AdminControllers extends Controller
 		'jumlah_kamar' => $request->jumlah_kamar,
 	]);
 	// alihkan halaman ke halaman pegawai
-	return redirect('/dashboard');
+	return redirect('admin/kamar/dashboard');
     }
 
     /**
@@ -71,7 +71,7 @@ class AdminControllers extends Controller
         // mengambil data kamar berdasarkan id yang dipilih
 	$kamar = DB::table('kamar')->where('id_kamar',$id)->get();
 	// passing data kamar yang didapat ke view edit.blade.php
-	return view('admin.edit',['kamar' => $kamar]);
+	return view('admin/kamar/edit',['kamar' => $kamar]);
     }
 
     /**
@@ -90,7 +90,7 @@ class AdminControllers extends Controller
         
 	]);
 	// alihkan halaman ke halaman kamar
-	return redirect('/dashboard');
+	return redirect('admin/kamar/dashboard');
     }
 
     /**
@@ -99,8 +99,12 @@ class AdminControllers extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        // menghapus data pegawai berdasarkan id yang dipilih
+	DB::table('kamar')->where('id_kamar',$id)->delete();
+		
+	// alihkan halaman ke halaman pegawai
+	return redirect('admin/kamar/dashboard');
     }
 }

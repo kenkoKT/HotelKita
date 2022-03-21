@@ -16,6 +16,15 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('admin/kamar/dashboard') }}">Kamar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('admin/kamar/dashboard') }}">Fasilitas Kamar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('admin/kamar/dashboard') }}">Fasilitas Umum Hotel</a>
+                </li>
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
@@ -30,7 +39,7 @@
                     @endif --}}
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
 
