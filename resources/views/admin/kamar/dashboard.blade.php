@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@include('partials.navbar')
+@include('partials.navbark')
 
 @section('content')
 <h3>Data Kamar</h3>

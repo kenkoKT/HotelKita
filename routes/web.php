@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KamarControllers;
+use App\Http\Controllers\FkamarControllers;
+use App\Http\Controllers\FhotelControllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +46,15 @@ Route::post('/admin/fkamar/store',[FkamarControllers::class, 'store']);
 Route::get('/admin/fkamar/edit/{id}',[FkamarControllers::class, 'edit'])->name('admin/fkamar/edit');
 Route::post('/admin/fkamar/update/{id}',[FkamarControllers::class, 'update']);
 Route::get('/admin/fkamar/hapus/{id}',[FkamarControllers::class, 'delete']);
+
+Route::get('admin/fhotel/dashboard', [FhotelControllers::class, 'index'])->name('admin/fhotel/dashboard');
+
+Route::get('/admin/fhotel/create',[FhotelControllers::class, 'create'])->name('admin/fhotel/create');
+Route::post('/admin/fhotel/store',[FhotelControllers::class, 'store']);
+
+Route::get('/admin/fhotel/edit/{id}',[FhotelControllers::class, 'edit'])->name('admin/fhotel/edit');
+Route::post('/admin/fhotel/update/{id}',[FhotelControllers::class, 'update']);
+Route::get('/admin/fhotel/hapus/{id}',[FhotelControllers::class, 'delete']);
 
 
 Route::middleware('role:resepsionis')->get('/dashboard_resepsionis', function(){

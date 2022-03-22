@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@include('partials.navbar')
+@include('partials.navbark')
 
 @section('content')
-<h3>Data Kamar</h3>
+<h3>Data Fasilitas Kamar</h3>
  
-<a href="/admin/kamar/create"><button type="button" class="btn btn-primary active">Tambah Kamar Baru</button></a>
+<a href="/admin/fkamar/create"><button type="button" class="btn btn-primary active">Tambah Fasilitas Kamar</button></a>
 	
 	<br/>
 	<br/>
@@ -15,19 +15,19 @@
 		<thead class="thead-dark">
 		  <tr>
 			<th scope="col">Tipe Kamar</th>
-			<th scope="col">Jumlah Kamar</th>
+			<th scope="col">Nama Fasilitas</th>
 			<th scope="col">Aksi</th>
 		  </tr>
 		</thead>
 		<tbody>
-			@foreach($kamar as $k)
+			@foreach($fkamar as $f)
 			<tr>
-				<td>{{ $k->tipe_kamar }}</td>
-				<td>{{ $k->jumlah_kamar }}</td>
+				<td>{{ $f->tipe_kamar }}</td>
+				<td>{{ $f->nama_fasilitas }}</td>
 				<td>
-					<a href="/admin/kamar/edit/{{ $k->id_kamar }}"><button type="button" class="btn btn-success active">Edit</button></a>
+					<a href="/admin/fkamar/edit/{{ $f->id_fkamar }}"><button type="button" class="btn btn-success active">Edit</button></a>
 					|
-					<a href="/admin/kamar/hapus/{{ $k->id_kamar }}"><button type="button" class="btn btn-danger active">Hapus</button></a>
+					<a href="/admin/fkamar/hapus/{{ $f->id_fkamar }}"><button type="button" class="btn btn-danger active">Hapus</button></a>
 				</td>
 			</tr>
 			@endforeach

@@ -7,15 +7,15 @@
 </head>
 <body>
  
-	<h3>Data Kamar</h3>
+	<h3>Data Fasilitas Kamar</h3>
  
-	<a href="{{ route('admin/kamar/dashboard') }}"><button type="button" class="btn btn-primary active">Kembali</button></a>
+	<a href="{{ route('admin/fkamar/dashboard') }}"><button type="button" class="btn btn-primary active">Kembali</button></a>
 
 	
 	<br/>
 	<br/>
 
-	<form action="/admin/kamar/store" method="post">
+	<form action="/admin/fkamar/store" method="post">
 		{{ csrf_field() }}
 		<div class="form-group">
 		  <label>Tipe Kamar</label>
@@ -23,8 +23,8 @@
 		</div>
 		<br/>
 		<div class="form-group">
-		  <label>Jumlah Kamar</label>
-		  <input type="number" class="form-control" name="jumlah_kamar" required="required">
+		  <label>Nama Fasilitas</label>
+		  <input type="text" class="form-control" name="nama_fasilitas" required="required">
 		</div>
 		<br/>
 		<button type="submit" class="btn btn-primary" value="Simpan Data">Submit</button>
