@@ -17,6 +17,22 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('admin/kamar/dashboard') }}">Kamar</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Fasilitas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Fasilitas Kamar</a>
+                        <a class="dropdown-item" href="#">Fasilitas Hotel</a>
+                    </div>
+                </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link active" href="{{ route('admin/fkamar/dashboard') }}">Fasilitas Kamar</a>
                 </li>

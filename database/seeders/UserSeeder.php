@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
 
         $tamu = User::create([
             'name' => 'Tamu',
-            'email' => 'resepsi@role.test',
+            'email' => 'user@role.test',
             'password' => bcrypt('12345678')
         ]);
 
