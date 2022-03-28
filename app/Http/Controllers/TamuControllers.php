@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class DataReservasiControllers extends Controller
+class TamuControllers extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,11 @@ class DataReservasiControllers extends Controller
      */
     public function index()
     {
-        return view('tamu/dashboard');
+        // mengambil data dari table pegawai
+    	$kamar = DB::table('kamar')->get();
+
+    	// mengirim data pegawai ke view index
+    	return view('tamu/dashboard',['kamar' => $kamar]);
     }
 
     /**
@@ -22,10 +26,10 @@ class DataReservasiControllers extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function create()
-    // {
-    //     return view('home');
-    // }
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,20 +39,15 @@ class DataReservasiControllers extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('reservasi')->insert([
-            'tgl_checkin' => $request->tgl_checkin,
-            'tgl_checkout' => $request->tgl_checkout,
-            'jumlah_kamar' => $request->jumlah_kamar,
-            'nama_pemesanan' => $request->nama_pemesanan,
-            'email' => $request->email,
-            'nama_tamu' => $request->nama_tamu,
-            'tipe_kamar' => $request->tipe_kamar,
-        ]);
-
-        // alihkan halaman ke halaman home
-        return redirect('tamu/dashboard')->with('succes','Data Berhasil Di Tambahkan');
-
+        //
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         //

@@ -18,20 +18,13 @@
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('home') }}">Home</a>
+                    <a class="nav-link active" href="{{ route('tamu/dashboard') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('admin/kamar/dashboard') }}">Kamar</a>
+                    <a class="nav-link active" href="/tamu/kamar">Kamar</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Fasilitas
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Fasilitas Kamar</a>
-                        <a class="dropdown-item" href="#">Fasilitas Hotel</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/tamu/fasilitas">Fasilitas</a>
                 </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link active" href="{{ route('admin/fkamar/dashboard') }}">Fasilitas Kamar</a>

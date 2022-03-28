@@ -48,6 +48,6 @@ class LoginController extends Controller
         }elseif ($user->hasRole('tamu')) {
             return redirect()->route('tamu/dashboard');
         }
-        return redirect()->route('home');
+        return redirect()->route('/');
     }
 }

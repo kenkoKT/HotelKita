@@ -25,7 +25,7 @@
                 <tr>
                     <td>{{ $h->nama_fasilitas }}</td>
                     <td>{{ $h->keterangan }}</td>
-                    <td>{{ $h->image }}</td>
+                    <td><img src="{{ ("/img/").$h->image }}" alt="" style="width: 100px; height: 100px"/></td>
                     <td>
                         <a href="/admin/fhotel/edit/{{ $h->id_fhotel }}"><button type="button"
                                 class="btn btn-success active">Edit</button></a>

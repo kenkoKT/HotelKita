@@ -28,7 +28,13 @@ Auth::routes();
 Route::get('/',[HomeController::class, 'index'])->name('home');
 //tamu
 Route::middleware('role:tamu')->get('tamu/dashboard', [DataReservasiControllers::class, 'index'])->name('tamu/dashboard');
-Route::post('tamu/dashboard',[DataReservasiControllers::class, 'store'])->name('datareservasi.store');
+Route::post('/tamu/dashboard',[DataReservasiControllers::class, 'store'])->name('datareservasi.store');
+Route::get('/tamu/kamar', function () {
+    return view('tamu/kamar');
+});
+Route::get('/tamu/fasilitas', function () {
+    return view('tamu/fasilitas');
+});
 
 //admin
 Route::middleware('role:admin')->get('admin/kamar/dashboard', [KamarControllers::class, 'index'])->name('admin/kamar/dashboard');
