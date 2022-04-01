@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\reservasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Session;
 
 class DataReservasiControllers extends Controller
 {
@@ -46,7 +48,7 @@ class DataReservasiControllers extends Controller
         ]);
 
         // alihkan halaman ke halaman home
-        return redirect('tamu/dashboard')->with('succes','Data Berhasil Di Tambahkan');
+        return redirect('tamu/dashboard');
 
     }
     public function show($id)

@@ -14,15 +14,30 @@ class ResepsionisControllers extends Controller
      */
     public function index(Request $request)
     {
-        $keyword = $request->keyword;
         // $reservasi = DB::where('nama')
         $reservasi = DB::table('reservasi')
-        ->where('nama_tamu','LIKE', '%'.$keyword.'%')
-        ->orwhere('tgl_checkin','LIKE', '%'.$keyword.'%')
         ->get();
- 
+
     	// mengirim data tamu ke view index
     	return view('resepsionis/dashboard',['reservasi' => $reservasi]);
+    }
+
+    public function search(Request $request)
+    {
+
+
+        // dd($request->nama_tamu);
+        $reservasi = DB::table('reservasi')->where('nama_tamu', $request->nama_tamu)->get();
+
+        return view('resepsionis/dashboard', ['reservasi' => $reservasi]);
+    }
+    public function filter(Request $request)
+    {
+
+        // dd($request->nama_tamu);
+        $reservasi = DB::table('reservasi')->where('tgl_checkin', $request->tgl_checkin)->get();
+
+        return view('resepsionis/dashboard', ['reservasi' => $reservasi]);
     }
 
     /**

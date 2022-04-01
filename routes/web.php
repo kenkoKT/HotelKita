@@ -7,6 +7,8 @@ use App\Http\Controllers\FkamarControllers;
 use App\Http\Controllers\FhotelControllers;
 use App\Http\Controllers\ResepsionisControllers;
 use App\Http\Controllers\DataReservasiControllers;
+use App\Http\Controllers\TamuControllers;
+use App\Http\Controllers\CetakPDFControllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +34,20 @@ Route::post('/tamu/dashboard',[DataReservasiControllers::class, 'store'])->name(
 Route::get('/tamu/kamar', function () {
     return view('tamu/kamar');
 });
-Route::get('/tamu/fasilitas', function () {
-    return view('tamu/fasilitas');
+Route::get('/tamu/fasilitas_kamar', function () {
+    return view('tamu/fasilitas_kamar');
 });
+Route::get('/tamu/fasilitas_hotel', function () {
+    return view('tamu/fasilitas_hotel');
+});
+
+//print pdf
+Route::get('/tamu/bukti_pemesanan',[CetakPDFControllers::class, 'index'])->name('/tamu/bukti_pemesanan');
+Route::get('/tamu/bukti_pemesanan/hapus/{id}',[CetakPDFControllers::class, 'delete']);
+Route::get('/tamu/cetak_bukti_pemesanan/{id}',[CetakPDFControllers::class, 'edit'])->name('/tamu/cetak_bukti_pemesanan');;
+
+//bukti pemesanan
+// Route::get('/tamu/bukti_pemesanan/{id}',[CetakPDFControllers::class, 'index'])->name('/tamu/cetak_bukti_pemesanan');
 
 //admin
 Route::middleware('role:admin')->get('admin/kamar/dashboard', [KamarControllers::class, 'index'])->name('admin/kamar/dashboard');
@@ -67,4 +80,6 @@ Route::get('/admin/fhotel/hapus/{id}',[FhotelControllers::class, 'delete']);
 //     return view ('resepsionis.dashboard');
 // })->name('resepsionis.dashboard');
 
-Route::middleware('role:resepsionis')->get('resepsionis/dashboard', [ResepsionisControllers::class, 'index'])->name('resepsionis/dashboard');
+Route::middleware('role:resepsionis')->get('/resepsionis/dashboard', [ResepsionisControllers::class, 'index'])->name('resepsionis/dashboard');
+Route::middleware('role:resepsionis')->post('/resepsionis/dashboard/search', [ResepsionisControllers::class, 'search'])->name('resepsionis.search');
+Route::middleware('role:resepsionis')->post('/resepsionis/dashboard/filter', [ResepsionisControllers::class, 'filter'])->name('resepsionis.filter');

@@ -112,8 +112,8 @@ class FhotelControllers extends Controller
     {
     //     // update data kamar
 	DB::table('fhotel')->where('id_fhotel',$request->id)->update([
-        'tipe_kamar' => $request->tipe_kamar,
         'nama_fasilitas' => $request->nama_fasilitas,
+        'keterangan' => $request->keterangan,
         'image' => $request->image,
     ]);
 

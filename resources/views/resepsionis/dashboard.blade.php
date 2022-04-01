@@ -4,12 +4,36 @@
 
 @section('content')
     <div class="container">
-        <form method="get" action="{{ route('resepsionis/dashboard') }}">
-            <input type="text" name="keyword" />
-            <button type="submit">Search</button>
-            <input type="date" name="keyword" />
-            <button type="submit">Search</button>
-        </form>
+        <div class="row">
+            <div class="col-sm">
+                <form class="d-flex" action="{{ route('resepsionis.search') }}" method="POST">
+                    @csrf
+
+                    <div class="form-floating">
+                        <input required type="text" name="nama_tamu" class="form-control" id="nama_tamu" value=""
+                            style="width : 250px">
+                        <label for="floatingInputGrid">Search ( nama tamu)</label>
+                    </div>
+                    <button class="btn btn-outline-success ml-3" type="submit">Search</button>
+                </form>
+
+            </div>
+            <div class="col-sm">
+            </div>
+            <div class="col-sm">
+                <form action="{{ route('resepsionis.filter') }}" class="d-flex" method="POST">
+                    @csrf
+
+                    <div class="form-floating">
+                        <input required type="date" name="tgl_checkin" class="form-control" id="tgl_checkin" value=""
+                            style="width : 250px">
+                        <label for="floatingInputGrid">filter ( tanggal check-in)</label>
+                    </div>
+                    <button class="btn btn-outline-success ml-3" type="submit">Filter</button>
+                </form>
+            </div>
+        </div>
+    </div>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -27,6 +51,9 @@
                         <td>{{ $r->tgl_checkout }}</td>
                         <td>
                             <a href=""><button type="button" class="btn btn-success active">Checkin</button></a>
+
+                            <a href="/tamu/bukti_pemesanan/hapus/{{ $r->id_reservasi }}"><button type="button"
+                                class="btn btn-danger active">Hapus Pesanan</button></a>
                         </td>
                     </tr>
                 @endforeach

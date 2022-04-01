@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom py-3">
+<nav class="navbar navbar-expand-md navbar-light bg-black border-bottom py-3">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'HOTELKITA') }}
+            {{ config('app.name', 'Empire Kenzo Hotel') }}
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -18,18 +18,18 @@
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('admin/kamar/dashboard') }}">Kamar</a>
+                    <a class="nav-link active text-white" href="{{ route('admin/kamar/dashboard') }}">Kamar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('admin/fkamar/dashboard') }}">Fasilitas Kamar</a>
+                    <a class="nav-link active text-white" href="{{ route('admin/fkamar/dashboard') }}">Fasilitas Kamar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('admin/fhotel/dashboard') }}">Fasilitas Umum Hotel</a>
+                    <a class="nav-link active text-white" href="{{ route('admin/fhotel/dashboard') }}">Fasilitas Umum Hotel</a>
                 </li>
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                     @endif
 
@@ -40,7 +40,7 @@
                     @endif --}}
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle active" href="#" role="button"
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle active text-white" href="#" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>

@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom py-3">
+<nav class="navbar navbar-expand-md navbar-light text-white bg-black border-bottom py-3">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'HOTELKITA') }}
+        <a class="navbar-brand text-white" href="{{ url('/') }}">
+            {{ config('app.name', 'Empire Kenzo Hotel') }}
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -17,14 +17,14 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
-                <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('tamu/dashboard') }}">Home</a>
+                <li class="nav-item ">
+                    <a class="nav-link active text-white" href="{{ route('tamu/dashboard') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/tamu/kamar">Kamar</a>
+                    <a class="nav-link active text-white" href="/tamu/bukti_pemesanan">Pesanan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/tamu/fasilitas">Fasilitas</a>
+                    <a class="nav-link active text-white" href="/tamu/fasilitas_hotel">Fasilitas</a>
                 </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link active" href="{{ route('admin/fkamar/dashboard') }}">Fasilitas Kamar</a>
@@ -35,7 +35,7 @@
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item ">
-                            <a class="nav-link active" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link active text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                     @endif
 
@@ -45,8 +45,8 @@
                         </li>
                     @endif --}}
                 @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle active" href="#" role="button"
+                    <li class="nav-item dropdown text-white">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle active text-white" href="#" role="button"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>

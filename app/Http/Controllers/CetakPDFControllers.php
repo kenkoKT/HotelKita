@@ -5,18 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class TamuControllers extends Controller
+class CetakPDFControllers extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $kamar = DB::table('kamar')->where('id_kamar',$id)->get();
-	// passing data kamar yang didapat ke view edit.blade.php
-	return view('tamu/kamar',['kamar' => $kamar]);
+        // $reservasi = DB::where('nama')
+        $reservasi = DB::table('reservasi')->get();
+
+    	// mengirim data tamu ke view index
+    	return view('tamu/bukti_pemesanan',['reservasi' => $reservasi]);
     }
 
     /**
@@ -59,7 +61,12 @@ class TamuControllers extends Controller
      */
     public function edit($id)
     {
-        //
+        {
+            // mengambil data kamar berdasarkan id yang dipilih
+        $reservasi = DB::table('reservasi')->where('id_reservasi',$id)->get();
+        // passing data kamar yang didapat ke view edit.blade.php
+        return view('tamu/cetak_bukti_pemesanan',['reservasi' => $reservasi]);
+        }
     }
 
     /**
@@ -80,8 +87,11 @@ class TamuControllers extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+    DB::table('reservasi')->where('id_reservasi',$id)->delete();
+
+	// alihkan halaman ke halaman pegawai
+	return redirect('tamu/bukti_pemesanan');
     }
 }
