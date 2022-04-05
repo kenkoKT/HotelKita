@@ -7,7 +7,9 @@ use App\Http\Controllers\FkamarControllers;
 use App\Http\Controllers\FhotelControllers;
 use App\Http\Controllers\ResepsionisControllers;
 use App\Http\Controllers\DataReservasiControllers;
-use App\Http\Controllers\TamuControllers;
+use App\Http\Controllers\TamuKamarControllers;
+use App\Http\Controllers\TamuFkamarControllers;
+use App\Http\Controllers\TamuFhotelControllers;
 use App\Http\Controllers\CetakPDFControllers;
 
 /*
@@ -31,20 +33,15 @@ Route::get('/',[HomeController::class, 'index'])->name('home');
 //tamu
 Route::middleware('role:tamu')->get('tamu/dashboard', [DataReservasiControllers::class, 'index'])->name('tamu/dashboard');
 Route::post('/tamu/dashboard',[DataReservasiControllers::class, 'store'])->name('datareservasi.store');
-Route::get('/tamu/kamar', function () {
-    return view('tamu/kamar');
-});
-Route::get('/tamu/fasilitas_kamar', function () {
-    return view('tamu/fasilitas_kamar');
-});
-Route::get('/tamu/fasilitas_hotel', function () {
-    return view('tamu/fasilitas_hotel');
-});
+
+Route::get('/tamu/kamar',[TamuKamarControllers::class, 'index'])->name('tamu.kamar');
+Route::get('/tamu/fasilitas_hotel',[TamuFhotelControllers::class, 'index'])->name('tamu.fasilitas_hotel');
+
 
 //print pdf
 Route::get('/tamu/bukti_pemesanan',[CetakPDFControllers::class, 'index'])->name('/tamu/bukti_pemesanan');
 Route::get('/tamu/bukti_pemesanan/hapus/{id}',[CetakPDFControllers::class, 'delete']);
-Route::get('/tamu/cetak_bukti_pemesanan/{id}',[CetakPDFControllers::class, 'edit'])->name('/tamu/cetak_bukti_pemesanan');;
+Route::get('/tamu/cetak_bukti_pemesanan/{id}',[CetakPDFControllers::class, 'edit'])->name('/tamu/cetak_bukti_pemesanan');
 
 //bukti pemesanan
 // Route::get('/tamu/bukti_pemesanan/{id}',[CetakPDFControllers::class, 'index'])->name('/tamu/cetak_bukti_pemesanan');

@@ -37,9 +37,10 @@
     <div id="app">
 
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        {{-- <main class="py-4">
+
+        </main> --}}
+        @yield('content')
     </div>
 </body>
 

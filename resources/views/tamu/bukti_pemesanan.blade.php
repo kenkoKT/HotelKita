@@ -3,6 +3,8 @@
 @include('partials.navbary')
 
 @section('content')
+<br>
+<br>
     <div class="container">
         <table class="table">
             <thead class="thead-dark">

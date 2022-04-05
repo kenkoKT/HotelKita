@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-black border-bottom py-3">
+<nav class="navbar navbar-expand-md navbar-light bg-black">
     <div class="container">
         <a class="navbar-brand text-white" href="{{ url('/') }}">
             {{ config('app.name', 'Empire Kenzo Hotel') }}
@@ -30,11 +30,11 @@
                         </li>
                     @endif
 
-                    {{-- @if (Route::has('register'))
+                    @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link active text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
-                    @endif --}}
+                    @endif
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle active text-white" href="#" role="button"

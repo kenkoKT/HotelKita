@@ -75,53 +75,16 @@
 
         <main>
 
-            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-
-
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="bd-placeholder-img" width="800px" height="400px" src="/img/hotel.jpg" aria-hidden="true"
-                            preserveAspectRatio="xMidYMid slice" focusable="false">
-                        <rect width="800px" height="100%" fill="#777" />
-                        </img>
-
-                        <div class="container">
-                            <div class="carousel-caption text-start">
-                                <h1>Empire Kenzo Hotel</h1>
-                                <p>Hotelnya Para Humanoid (Pancen Oye)</p>
-                                <p><a class="btn btn-lg btn-primary" href="#">Pesan Sekarang</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="bd-placeholder-img" width="800px" height="400px" src="/img/hotel1.jpg"
-                            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                        <rect width="100%" height="100%" fill="#777" />
-                        </img>
-
-                    </div>
-                    <div class="carousel-item">
-                        <img class="bd-placeholder-img" width="800px" height="400px" src="/img/hotel2.jpg"
-                            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                        <rect width="100%" height="100%" fill="#777" />
-                        </img>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+            <img src="/img/hotel2.jpg" alt="" style="width:100%; height:607px;">
+<main class="px-3" >
+        <div class="container">
+            <div class="carousel-caption text-start">
+                <h1>Kenzo Empire  Hotel</h1>
+                <p>Hotelnya Para Humanoid (Pancen Oye)</p>
+                <p><a class="btn btn-lg btn-primary" href="{{ route('login') }}">Pesan Sekarang</a></p>
             </div>
+        </div>
+  </main>
 
             <hr class="featurette-divider">
 
@@ -218,69 +181,6 @@
                 </br>
                 </br>
 
-                <div class="container px-4 " id="custom-cards">
-                    <h2 class="pb-2 border-bottom">Kamar Tersedia Beserta Fasilitas</h2>
-                    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-4">
-                        <div class="col">
-                            <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
-                                style="background-image: url('/img/deluxe.jpg');">
-                                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Deluxe Room</h2>
-                                    <ul class="d-flex list-unstyled mt-auto">
-                                        <li class="d-flex align-items-center">
-                                            <a data-toggle="collapse" href="#collapseExample1" class="btn btn-primary"
-                                                role="button" aria-expanded="false"
-                                                aria-controls="collapseExample1">Detail</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="collapse" id="collapseExample1">
-                                    <ul class="d-flex list-unstyled mt-auto">
-                                        <li class="d-flex align-items-center me-3">
-                                            <h4>Sisa 1O Kamar</h4>
-                                        </li>
-                                    </ul>
-                                    <ul class="d-flex list-unstyled mt-auto">
-                                        <li class="d-flex align-items-center me-3">
-                                            <h4>Dengan Fasilitas Wifi Dan Tv Full HD</h4>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
-                                style="background-image: url('/img/superior.jpeg');">
-                                <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Superior Room</h2>
-                                    <ul class="d-flex list-unstyled mt-auto">
-                                        <ul class="d-flex list-unstyled mt-auto">
-                                            <li class="d-flex align-items-center">
-                                                <a data-toggle="collapse" href="#collapseExample2" class="btn btn-primary"
-                                                    role="button" aria-expanded="false"
-                                                    aria-controls="collapseExample2">Detail</a>
-                                            </li>
-                                        </ul>
-                                    </ul>
-                                </div>
-                                <div class="collapse" id="collapseExample2">
-                                    <ul class="d-flex list-unstyled mt-auto">
-                                        <li class="d-flex align-items-center me-3">
-                                            <h4>Sisa 1O Kamar</h4>
-                                        </li>
-                                    </ul>
-                                    <ul class="d-flex list-unstyled mt-auto">
-                                        <li class="d-flex align-items-center me-3">
-                                            <h4>Dengan Fasilitas Wifi Dan Tv Full HD</h4>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <hr class="featurette-divider">
                 <!-- /END THE FEATURETTES -->
 
@@ -289,8 +189,8 @@
 
             <!-- FOOTER -->
             <footer class="container">
-                <p class="float-end"><a href="#">Back to top</a></p>
-                <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+                <button class="btn-btn-lg btn-primary float-end"><a class="text-white" href="#">Back to top</a></button>
+                <p>&copy; 2022 Company Kenzo Empire &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
             </footer>
         </main>
 

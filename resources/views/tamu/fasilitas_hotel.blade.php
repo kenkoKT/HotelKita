@@ -3,36 +3,23 @@
 @include('partials.navbary')
 
 @section('content')
+<br>
+<br>
+
     <div class="container px-4 " id="custom-cards">
         <h2 class="pb-2 border-bottom">Fasilitas Hotel</h2>
-
+    @foreach ($fhotel as $f)
         <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-4">
             <div class="col">
-                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
-                    style="background-image: url('/img/kr1.jpg');">
-                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Kolam Renang</h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
-                    style="background-image: url('/img/jm.jpeg');">
-                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">GYM</h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg"
-                    style="background-image: url('/img/rm1.jpg');">
-                    <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Ruang Makan</h2>
+                <div class="card" style=" width:100%; height:20%;">
+                    <img class="card-img-top" src="{{ ("/img/").$f->image }}" alt="Card image">
+                    <div class="card-img-overlay">
+                      <h2 class="card-title text-white">{{ $f->nama_fasilitas }}</h2>
                     </div>
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
+
 @endsection

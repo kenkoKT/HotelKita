@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Fkamar;
+use App\Models\Kamar;
 
-class FkamarControllers extends Controller
+class TamuKamarControllers extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,13 @@ class FkamarControllers extends Controller
      */
     public function index()
     {
-        // mengambil data dari table pegawai
-    	$fkamar = DB::table('fkamar')->get();
-
-    	// mengirim data pegawai ke view index
-    	return view('admin/fkamar/dashboard',['fkamar' => $fkamar]);
+        // mengambil data dari table kamar
+        $kamar_deluxe = DB::table('kamar')->where('tipe_kamar', 'Deluxe')->get();
+        $kamar_superior = DB::table('kamar')->where('tipe_kamar', 'Superior')->get();
+        $superior = DB::table('fkamar')->where('tipe_kamar', 'Superior')->get();
+        $deluxe = DB::table('fkamar')->where('tipe_kamar', 'Deluxe')->get();
+    	// mengirim data kamar ke view index
+    	return view('tamu.kamar',compact('kamar_deluxe','kamar_superior','deluxe','superior'));
     }
 
     /**
@@ -30,7 +32,7 @@ class FkamarControllers extends Controller
     public function create()
     {
         // memanggil view tambah
-	return view('admin/fkamar/create');
+	return view('admin/kamar/create');
     }
 
     /**
@@ -42,11 +44,12 @@ class FkamarControllers extends Controller
     public function store(Request $request)
     {
         // insert data ke table kamar
-	// DB::table('fkamar')->insert([
+	// DB::table('kamar')->insert([
 	// 	'tipe_kamar' => $request->tipe_kamar,
-	// 	'nama_fasilitas' => $request->nama_fasilitas,
+	// 	'jumlah_kamar' => $request->jumlah_kamar,
 	// ]);
-    $data = Fkamar::create($request->all());
+
+    $data = Kamar::create($request->all());
 
     if($request->hasFile('gambar')){
         $request->file('gambar')->move('fotohotel/', $request->file('gambar')->getClientOriginalName());
@@ -54,7 +57,7 @@ class FkamarControllers extends Controller
         $data ->save();
     }
 	// alihkan halaman ke halaman pegawai
-	return redirect('admin/fkamar/dashboard');
+	return redirect('admin/kamar/dashboard');
     }
 
     /**
@@ -77,9 +80,9 @@ class FkamarControllers extends Controller
     public function edit($id)
     {
         // mengambil data kamar berdasarkan id yang dipilih
-	$fkamar = DB::table('fkamar')->where('id_fkamar',$id)->get();
+	$kamar = DB::table('kamar')->where('id_kamar',$id)->get();
 	// passing data kamar yang didapat ke view edit.blade.php
-	return view('admin/fkamar/edit',['fkamar' => $fkamar]);
+	return view('admin/kamar/edit',['kamar' => $kamar]);
     }
 
     /**
@@ -92,13 +95,13 @@ class FkamarControllers extends Controller
     public function update(Request $request, $id)
     {
         // update data kamar
-	DB::table('fkamar')->where('id_fkamar',$request->id)->update([
+	DB::table('kamar')->where('id_kamar',$request->id)->update([
         'tipe_kamar' => $request->tipe_kamar,
-        'nama_fasilitas' => $request->nama_fasilitas,
-        'image' => $request->image,
+        'jumlah_kamar' => $request->jumlah_kamar,
+
 	]);
 	// alihkan halaman ke halaman kamar
-	return redirect('admin/fkamar/dashboard');
+	return redirect('admin/kamar/dashboard');
     }
 
     /**
@@ -110,9 +113,9 @@ class FkamarControllers extends Controller
     public function delete($id)
     {
         // menghapus data pegawai berdasarkan id yang dipilih
-	DB::table('fkamar')->where('id_fkamar',$id)->delete();
+	DB::table('kamar')->where('id_kamar',$id)->delete();
 
 	// alihkan halaman ke halaman pegawai
-	return redirect('admin/fkamar/dashboard');
+	return redirect('admin/kamar/dashboard');
     }
 }

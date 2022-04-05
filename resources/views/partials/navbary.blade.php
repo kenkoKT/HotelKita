@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light text-white bg-black border-bottom py-3">
+<nav class="navbar navbar-expand-md navbar-light text-white bg-black">
     <div class="container">
         <a class="navbar-brand text-white" href="{{ url('/') }}">
             {{ config('app.name', 'Empire Kenzo Hotel') }}
@@ -21,10 +21,13 @@
                     <a class="nav-link active text-white" href="{{ route('tamu/dashboard') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active text-white" href="/tamu/bukti_pemesanan">Pesanan</a>
+                    <a class="nav-link active text-white" href="/tamu/kamar">Kamar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active text-white" href="/tamu/fasilitas_hotel">Fasilitas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-white" href="/tamu/bukti_pemesanan">Pesanan</a>
                 </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link active" href="{{ route('admin/fkamar/dashboard') }}">Fasilitas Kamar</a>

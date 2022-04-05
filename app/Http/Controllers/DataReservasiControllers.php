@@ -37,7 +37,13 @@ class DataReservasiControllers extends Controller
      */
     public function store(Request $request)
     {
+
+        $id = auth()->user()->id;
+
+        // dd($id);
+
         DB::table('reservasi')->insert([
+            'user_id' => $id,
             'tgl_checkin' => $request->tgl_checkin,
             'tgl_checkout' => $request->tgl_checkout,
             'jumlah_kamar' => $request->jumlah_kamar,

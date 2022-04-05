@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-black border-bottom py-3">
+<nav class="navbar navbar-expand-md navbar-light bg-black">
     <div class="container">
         <a class="navbar-brand text-white" href="{{ url('/') }}">
             {{ config('app.name', 'Empire Kenzo Hotel') }}

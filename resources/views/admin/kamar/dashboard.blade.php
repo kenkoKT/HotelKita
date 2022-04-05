@@ -16,6 +16,7 @@
             <tr>
                 <th scope="col">Tipe Kamar</th>
                 <th scope="col">Jumlah Kamar</th>
+                <th scope="col">Image</th>
                 <th scope="col">Aksi</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                 <tr>
                     <td>{{ $k->tipe_kamar }}</td>
                     <td>{{ $k->jumlah_kamar }}</td>
+                    <td><img src="{{ ("/img/").$k->image }}" alt="" style="width: 100px; height: 100px"/></td>
                     <td>
                         <a href="/admin/kamar/edit/{{ $k->id_kamar }}"><button type="button"
                                 class="btn btn-success active">Edit</button></a>

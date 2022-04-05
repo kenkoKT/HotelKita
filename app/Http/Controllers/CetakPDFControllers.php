@@ -14,8 +14,11 @@ class CetakPDFControllers extends Controller
      */
     public function index()
     {
+
+        $id = auth()->user()->id;
+
         // $reservasi = DB::where('nama')
-        $reservasi = DB::table('reservasi')->get();
+        $reservasi = DB::table('reservasi')->where('user_id', $id)->get();
 
     	// mengirim data tamu ke view index
     	return view('tamu/bukti_pemesanan',['reservasi' => $reservasi]);

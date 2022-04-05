@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Kamar;
 
 class KamarControllers extends Controller
 {
@@ -16,7 +17,7 @@ class KamarControllers extends Controller
     {
         // mengambil data dari table pegawai
     	$kamar = DB::table('kamar')->get();
- 
+
     	// mengirim data pegawai ke view index
     	return view('admin/kamar/dashboard',['kamar' => $kamar]);
     }
@@ -41,10 +42,18 @@ class KamarControllers extends Controller
     public function store(Request $request)
     {
         // insert data ke table kamar
-	DB::table('kamar')->insert([
-		'tipe_kamar' => $request->tipe_kamar,
-		'jumlah_kamar' => $request->jumlah_kamar,
-	]);
+	// DB::table('kamar')->insert([
+	// 	'tipe_kamar' => $request->tipe_kamar,
+	// 	'jumlah_kamar' => $request->jumlah_kamar,
+	// ]);
+
+    $data = Kamar::create($request->all());
+
+    if($request->hasFile('gambar')){
+        $request->file('gambar')->move('fotohotel/', $request->file('gambar')->getClientOriginalName());
+        $data -> gambar = $request->file('gambar')->getClientOriginalName();
+        $data ->save();
+    }
 	// alihkan halaman ke halaman pegawai
 	return redirect('admin/kamar/dashboard');
     }
@@ -87,7 +96,7 @@ class KamarControllers extends Controller
 	DB::table('kamar')->where('id_kamar',$request->id)->update([
         'tipe_kamar' => $request->tipe_kamar,
         'jumlah_kamar' => $request->jumlah_kamar,
-        
+
 	]);
 	// alihkan halaman ke halaman kamar
 	return redirect('admin/kamar/dashboard');
@@ -103,7 +112,7 @@ class KamarControllers extends Controller
     {
         // menghapus data pegawai berdasarkan id yang dipilih
 	DB::table('kamar')->where('id_kamar',$id)->delete();
-		
+
 	// alihkan halaman ke halaman pegawai
 	return redirect('admin/kamar/dashboard');
     }
