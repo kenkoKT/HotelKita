@@ -20,18 +20,18 @@
 		{{ csrf_field() }}
 		<input type="hidden" name="id" value="{{ $f->id_fkamar }}">
 		<div class="form-group">
-		  <label>Tipe Kamar</label>
-		  <input type="text" class="form-control" name="tipe_kamar" required="required" value="{{ $f->tipe_kamar }}">
+            <label>Tipe Kamar</label>
+          <select class="form-select" id="inputGroupSelect02" name="tipe_kamar" required>
+            <option>{{ $f->tipe_kamar }}</option>
+            <option>Deluxe</option>
+            <option>Superior</option>
+          </select>
 		</div>
 		<br/>
 		<div class="form-group">
 		  <label>Nama Fasilitas</label>
 		  <input type="text" class="form-control" name="nama_fasilitas" required="required" value="{{ $f->nama_fasilitas }}">
 		</div>
-        <div class="form-group">
-            <label>Image</label>
-            <input type="file" class="form-control" name="image" required="required" value="{{ $f->image }}">
-        </div>
 		<br/>
 		<button type="submit" class="btn btn-primary" value="Simpan Data">Submit</button>
 	  </form>

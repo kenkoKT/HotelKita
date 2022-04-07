@@ -1,0 +1,4 @@
+1. image (admin) -> (noted)
+2. dashboard tamu otomatis nama pemesan dan gmail 
+3. cetak bukti pemesanan seperti hotel biasanya
+4. checkin dan checkout pemesanan

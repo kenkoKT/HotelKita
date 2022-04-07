@@ -16,7 +16,6 @@
 		  <tr>
 			<th scope="col">Tipe Kamar</th>
 			<th scope="col">Nama Fasilitas</th>
-            <th scope="col">Image</th>
 			<th scope="col">Aksi</th>
 		  </tr>
 		</thead>
@@ -25,7 +24,6 @@
 			<tr>
 				<td>{{ $f->tipe_kamar }}</td>
 				<td>{{ $f->nama_fasilitas }}</td>
-                <td><img src="{{ ("/img/").$f->image }}" alt="" style="width: 100px; height: 100px"/></td>
 				<td>
 					<a href="/admin/fkamar/edit/{{ $f->id_fkamar }}"><button type="button" class="btn btn-success active">Edit</button></a>
 					|

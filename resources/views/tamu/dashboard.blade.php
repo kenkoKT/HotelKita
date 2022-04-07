@@ -81,7 +81,6 @@
             <div class="carousel-caption text-start">
                 <h1>Kenzo Empire  Hotel</h1>
                 <p>Hotelnya Para Humanoid (Pancen Oye)</p>
-                <p><a class="btn btn-lg btn-primary" href="{{ route('login') }}">Pesan Sekarang</a></p>
             </div>
         </div>
   </main>
@@ -127,16 +126,19 @@
                         </br>
                         <h3>Form Pemesanan Kamar</h3>
                         </br>
+                    @foreach ( $users as $u)
+                        <input type="hidden" name="id" value="{{ $u->id }}">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nama Pemesan</label>
                             <input name="nama_pemesanan" type="text" class="form-control" id="nama_pemesan"
-                                placeholder="Nama Pemesanan">
+                                placeholder="Nama Pemesanan" value="{{ $u->name }}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
                             <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                                placeholder="Enter email">
+                                placeholder="Enter email" value="{{ $u->email }}">
                         </div>
+                    @endforeach
                         <div class="form-group">
                             <label for="exampleInputEmail1">No Handphone</label>
                             <input name="no_hp" type="number" class="form-control" id="no_hp" placeholder="No Handphone">
@@ -149,13 +151,14 @@
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Tipe Kamar</label>
                             <select name="tipe_kamar" id="tipe_kamar" class="form-control" id="exampleFormControlSelect1">
-                                <option value="deluxe_room">Deluxe Room</option>
-                                <option value="superior_room">Superior Room</option>
+                            @foreach ( $kamar as $k)
+                            <option value="{{ $k->tipe_kamar }}">Kamar {{ $k->tipe_kamar }} Yang tersedia -> {{ $k->jumlah_kamar }}</option>
+                            @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary"><a> Konfirmasi
-                                    Pemasanan</a></button>
+                            <a href="tamu/bukti_pemesanan"><button type="submit" class="btn btn-primary"> Konfirmasi
+                                    Pemasanan</button></a>
                         </div>
                     </div>
                 </form>

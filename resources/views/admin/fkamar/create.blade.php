@@ -31,10 +31,6 @@
 		  <label>Nama Fasilitas</label>
 		  <input type="text" class="form-control" name="nama_fasilitas" required="required">
 		</div>
-        <div class="form-group">
-            <label>Image</label>
-            <input type="file" class="form-control" name="image" required="required">
-        </div>
 		<br/>
 		<button type="submit" class="btn btn-primary" value="Simpan Data">Submit</button>
 	  </form>

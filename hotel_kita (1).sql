@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Mar 2022 pada 16.00
+-- Waktu pembuatan: 07 Apr 2022 pada 10.06
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 7.4.27
 
@@ -58,7 +58,7 @@ CREATE TABLE `fhotel` (
 
 INSERT INTO `fhotel` (`id_fhotel`, `nama_fasilitas`, `keterangan`, `image`, `updated_at`, `created_at`) VALUES
 (1, 'GYM', 'Fasilitas Untuk Cowo Kece', 'jm.jpeg', '2022-03-28', '2022-03-28'),
-(2, 'Kolam Renang', 'Terletak ditengah Hotel dengan berbagai macam tipe kolam renang', 'hotel.jpg', '2022-03-28', '2022-03-28'),
+(2, 'Kolam Renang', 'Terletak ditengah Hotel dengan berbagai macam tipe kolam renang', 'kr1.jpg', '2022-03-28', '2022-03-28'),
 (3, 'Ruang Makan', 'Tempat Yang Nyaman Buat Menikmati Santapan Jam Berapa pun Itu', 'rm1.jpg', '2022-03-28', '2022-03-28');
 
 -- --------------------------------------------------------
@@ -70,20 +70,21 @@ INSERT INTO `fhotel` (`id_fhotel`, `nama_fasilitas`, `keterangan`, `image`, `upd
 CREATE TABLE `fkamar` (
   `id_fkamar` int(250) NOT NULL,
   `tipe_kamar` varchar(250) NOT NULL,
-  `nama_fasilitas` varchar(250) NOT NULL
+  `nama_fasilitas` varchar(250) NOT NULL,
+  `updated_at` date NOT NULL,
+  `created_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `fkamar`
 --
 
-INSERT INTO `fkamar` (`id_fkamar`, `tipe_kamar`, `nama_fasilitas`) VALUES
-(1, 'Standart Room', 'TV XD'),
-(2, 'Standart Room', 'Wifi 24 Jam'),
-(3, 'Deluxe Room', 'TV XDD'),
-(4, 'Deluxe Room', 'Wifi 32 Jam'),
-(5, 'Superior Room', 'TV XDDD'),
-(6, 'Superior Room', 'Wifi 52 Jam');
+INSERT INTO `fkamar` (`id_fkamar`, `tipe_kamar`, `nama_fasilitas`, `updated_at`, `created_at`) VALUES
+(7, 'Deluxe', 'TV XD, Mini Bar', '2022-04-05', '2022-04-05'),
+(9, 'Superior', 'Kolam Renang', '2022-04-05', '2022-04-05'),
+(10, 'Deluxe', 'Wifi 24 Jam', '2022-04-05', '2022-04-05'),
+(11, 'Superior', 'Wifi 320 Jam', '2022-04-06', '2022-04-06'),
+(12, 'Deluxe', 'pancuran', '2022-04-07', '2022-04-07');
 
 -- --------------------------------------------------------
 
@@ -94,17 +95,19 @@ INSERT INTO `fkamar` (`id_fkamar`, `tipe_kamar`, `nama_fasilitas`) VALUES
 CREATE TABLE `kamar` (
   `id_kamar` int(100) NOT NULL,
   `tipe_kamar` varchar(250) NOT NULL,
-  `jumlah_kamar` int(250) NOT NULL
+  `jumlah_kamar` int(250) NOT NULL,
+  `image` varchar(250) NOT NULL,
+  `updated_at` date NOT NULL,
+  `created_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `kamar`
 --
 
-INSERT INTO `kamar` (`id_kamar`, `tipe_kamar`, `jumlah_kamar`) VALUES
-(1, 'Standart Room', 10),
-(2, 'Deluxe Room', 10),
-(3, 'Superior Room', 10);
+INSERT INTO `kamar` (`id_kamar`, `tipe_kamar`, `jumlah_kamar`, `image`, `updated_at`, `created_at`) VALUES
+(8, 'Superior', 10, 'superior.jpeg', '2022-04-05', '2022-04-05'),
+(9, 'Deluxe', 7, 'deluxe1.jpg', '2022-04-06', '2022-04-06');
 
 -- --------------------------------------------------------
 
@@ -161,7 +164,12 @@ INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 1),
 (2, 'App\\Models\\User', 2),
 (3, 'App\\Models\\User', 3),
-(3, 'App\\Models\\User', 4);
+(3, 'App\\Models\\User', 4),
+(3, 'App\\Models\\User', 5),
+(3, 'App\\Models\\User', 6),
+(3, 'App\\Models\\User', 7),
+(3, 'App\\Models\\User', 8),
+(3, 'App\\Models\\User', 9);
 
 -- --------------------------------------------------------
 
@@ -224,20 +232,23 @@ CREATE TABLE `reservasi` (
   `id_reservasi` int(250) NOT NULL,
   `tgl_checkin` date NOT NULL,
   `tgl_checkout` date NOT NULL,
-  `jumlah_kamar` int(250) NOT NULL,
+  `jumlah_kamar` varchar(250) NOT NULL,
   `nama_pemesanan` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
-  `nama_tamu` varchar(250) NOT NULL,
-  `tipe_kamar` varchar(250) NOT NULL
+  `nama_tamu` text NOT NULL,
+  `tipe_kamar` varchar(250) NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `reservasi`
 --
 
-INSERT INTO `reservasi` (`id_reservasi`, `tgl_checkin`, `tgl_checkout`, `jumlah_kamar`, `nama_pemesanan`, `email`, `nama_tamu`, `tipe_kamar`) VALUES
-(1, '2022-03-28', '2022-04-14', 3, 'yah', 'admin@role.test', 'Kenko', 'superior_room'),
-(2, '2022-03-28', '2022-03-29', 1, 'Nicko', 'kenkonicko9@gmail.com', 'Yafet', 'deluxe_room');
+INSERT INTO `reservasi` (`id_reservasi`, `tgl_checkin`, `tgl_checkout`, `jumlah_kamar`, `nama_pemesanan`, `email`, `nama_tamu`, `tipe_kamar`, `user_id`) VALUES
+(19, '2022-04-07', '2022-04-08', '2', 'Nicko', 'kenkonicko9@gmail.com', 'Nicko', 'Superior', 3),
+(20, '2022-04-07', '2022-04-08', '3', 'Nicko', 'kenkonicko59@gmail.com', 'Kenko', 'Deluxe', 3),
+(21, '2022-04-07', '2022-04-15', '12', 'Nicko', 'kenkonicko9@gmail.com', 'Kenko', 'Superior', 3),
+(22, '2022-04-07', '2022-04-08', '5', 'aprilianto', 'april@gmail.com', 'April', 'Superior', 3);
 
 -- --------------------------------------------------------
 
@@ -298,7 +309,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (1, 'Admin', 'admin@role.test', NULL, '$2y$10$vg/NpK4yAqOOyx9Fm3i/d.3dy.i.oqFMWsx3eU.4aMMkEL7v4/yji', NULL, '2022-03-24 21:02:35', '2022-03-24 21:02:35'),
 (2, 'Resepsionis', 'resepsi@role.test', NULL, '$2y$10$Vqi9JvFotMWl3pkdyeYkkeX.PJbb7II11ezFHELzC8S92ZZKyiSSS', NULL, '2022-03-24 21:02:35', '2022-03-24 21:02:35'),
 (3, 'Tamu', 'user@role.test', NULL, '$2y$10$6f5zNU7crqO3Qce5kwgj.OScHJkZxXhAB8GT466Wt2BiiQu5WiZIW', NULL, '2022-03-24 21:02:36', '2022-03-24 21:02:36'),
-(4, 'ken', 'kenkonicko9@gmail.com', NULL, '$2y$10$nsxxIV6CHX8RLdqA2NHy5exAOiyLZDtPd9.GVqi1HZRDX6/zFGbrK', NULL, '2022-03-27 22:37:21', '2022-03-27 22:37:21');
+(8, 'nicko', 'kenkonicko9@gmail.com', NULL, '$2y$10$.5xiLmfEnU2F7MMiE8..Bu1w4F/HTkUj.6co/2kJ20rOrbV9xAgVG', NULL, '2022-03-28 20:13:08', '2022-03-28 20:13:08'),
+(9, 'nicko', 'kenkonicko59@gmail.com', NULL, '$2y$10$2KigmMQaeBQtiY/2dmXhsOl0VbeEHHRWes35QZLgvHGrhkIfSRAma', NULL, '2022-04-05 18:59:15', '2022-04-05 18:59:15');
 
 --
 -- Indexes for dumped tables
@@ -417,13 +429,13 @@ ALTER TABLE `fhotel`
 -- AUTO_INCREMENT untuk tabel `fkamar`
 --
 ALTER TABLE `fkamar`
-  MODIFY `id_fkamar` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_fkamar` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `kamar`
 --
 ALTER TABLE `kamar`
-  MODIFY `id_kamar` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kamar` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -447,7 +459,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT untuk tabel `reservasi`
 --
 ALTER TABLE `reservasi`
-  MODIFY `id_reservasi` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_reservasi` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `roles`
@@ -459,7 +471,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

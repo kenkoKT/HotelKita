@@ -33,9 +33,11 @@
                     <input type="text" class="form-control" name="keterangan" required="required"
                         value="{{ $h->keterangan }}">
                 </div>
-                <div class="form-group">
-                    <label>Image</label>
-                    <input type="file" class="form-control" name="image" required="required" value="{{ $h->image }}">
+                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+                <div class="row">
+                    current image : <br>
+                    <img src="{{ asset("img/$h->image") }}" class="img-thumbnail" />
+                    <small>{{ $h->image }}</small>
                 </div>
                 <br />
                 <button type="submit" class="btn btn-primary" value="Simpan Data">Submit</button>

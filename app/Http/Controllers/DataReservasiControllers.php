@@ -16,7 +16,10 @@ class DataReservasiControllers extends Controller
      */
     public function index()
     {
-        return view('tamu/dashboard');
+        $kamar = DB::table('kamar')->get();
+
+        $users = DB::table('users')->get();
+        return view('tamu/dashboard',['kamar' => $kamar, 'users' => $users]);
     }
 
     /**
@@ -42,6 +45,17 @@ class DataReservasiControllers extends Controller
 
         // dd($id);
 
+        // dd($awal);
+
+
+       $awal = DB::table('kamar')->where('tipe_kamar', $request->tipe_kamar)->value('jumlah_kamar');
+
+        $akhir = $awal - $request->jumlah_kamar;
+
+        $this->validate($request,[
+            'email' =>'required|email'
+        ]);
+
         DB::table('reservasi')->insert([
             'user_id' => $id,
             'tgl_checkin' => $request->tgl_checkin,
@@ -53,8 +67,14 @@ class DataReservasiControllers extends Controller
             'tipe_kamar' => $request->tipe_kamar,
         ]);
 
+        // dd($akhir);
+
+        DB::table('kamar')->where('tipe_kamar', $request->tipe_kamar)->update([
+            'jumlah_kamar' => $akhir
+        ]);
+
         // alihkan halaman ke halaman home
-        return redirect('tamu/dashboard');
+        return redirect('tamu/bukti_pemesanan');
 
     }
     public function show($id)

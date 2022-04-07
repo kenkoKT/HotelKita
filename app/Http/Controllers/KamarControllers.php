@@ -96,6 +96,7 @@ class KamarControllers extends Controller
 	DB::table('kamar')->where('id_kamar',$request->id)->update([
         'tipe_kamar' => $request->tipe_kamar,
         'jumlah_kamar' => $request->jumlah_kamar,
+        'image' => $request->image,
 
 	]);
 	// alihkan halaman ke halaman kamar

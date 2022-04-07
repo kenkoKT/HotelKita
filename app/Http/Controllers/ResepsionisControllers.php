@@ -103,6 +103,9 @@ class ResepsionisControllers extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('reservasi')->where('id_reservasi',$id)->delete();
+
+        // alihkan halaman ke halaman pegawai
+        return redirect('resepsionis/dashboard');
     }
 }

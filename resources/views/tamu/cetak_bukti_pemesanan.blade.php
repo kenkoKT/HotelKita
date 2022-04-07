@@ -2,10 +2,16 @@
 
 
 @section('content')
+<br>
+<br>
     <div class="container">
         <div class="card" style="width: 500px; margin-left:300px; background-color:bisque;">
             <div class="card-body">
-                <h5 class="card-title">Bukti Pemesanan</h5>
+                <h3>Empire Kenzo Hotel</h3>
+                <hr class="featurette-divider">
+                <center><h5 class="card-title">Bukti Pemesanan</h5></center>
+
+                <hr class="featurette-divider">
                 @foreach ($reservasi as $r)
                 <form>
                     <div class="form-group">
@@ -27,6 +33,11 @@
                         <label for="exampleFormControlInput1">Tipe Kamar</label>
                         <input type="text" class="form-control" name="nama_tamu" required="required"
                         value="{{ $r->tipe_kamar }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Jumlah kamar</label>
+                        <input type="text" class="form-control" name="nama_tamu" required="required"
+                        value="{{ $r->jumlah_kamar }}">
                     </div>
                 </form>
                 @endforeach

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-black">
     <div class="container">
         <a class="navbar-brand text-white" href="{{ url('/') }}">
-            {{ config('app.name', 'Empire Kenzo Hotel') }}
+            Empire Kenzo
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

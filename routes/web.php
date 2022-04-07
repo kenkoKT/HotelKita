@@ -80,3 +80,5 @@ Route::get('/admin/fhotel/hapus/{id}',[FhotelControllers::class, 'delete']);
 Route::middleware('role:resepsionis')->get('/resepsionis/dashboard', [ResepsionisControllers::class, 'index'])->name('resepsionis/dashboard');
 Route::middleware('role:resepsionis')->post('/resepsionis/dashboard/search', [ResepsionisControllers::class, 'search'])->name('resepsionis.search');
 Route::middleware('role:resepsionis')->post('/resepsionis/dashboard/filter', [ResepsionisControllers::class, 'filter'])->name('resepsionis.filter');
+Route::get('/resepsionis/dashboard/hapus/{id}',[ResepsionisControllers::class, 'destroy']);
+

@@ -3,6 +3,8 @@
 @include('partials.navbarr')
 
 @section('content')
+<br>
+<br>
     <div class="container">
         <div class="row">
             <div class="col-sm">
@@ -38,7 +40,10 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Nama Tamu</th>
+                    <th scope="col">Jumlah Kamar</th>
+                    <th scope="col">Tipe Kamar</th>
                     <th scope="col">Tanggal Check In</th>
+                    <th scope="col">Tanggal Check Out</th>
                     <th scope="col">Tanggal Check Out</th>
                     <th scope="col">Aksi</th>
                 </tr>
@@ -47,13 +52,24 @@
                 @foreach ($reservasi as $r)
                     <tr>
                         <td>{{ $r->nama_tamu }}</td>
+                        <td>{{ $r->jumlah_kamar }}</td>
+                        <td>{{ $r->tipe_kamar }}</td>
                         <td>{{ $r->tgl_checkin }}</td>
                         <td>{{ $r->tgl_checkout }}</td>
                         <td>
-                            <a href=""><button type="button" class="btn btn-success active">Checkin</button></a>
+                            <button type="button"
+                                class="btn btn-secondary btn-sm ">Belum Checkin
+                            </button>
 
-                            <a href="/tamu/bukti_pemesanan/hapus/{{ $r->id_reservasi }}"><button type="button"
-                                class="btn btn-danger active">Hapus Pesanan</button></a>
+                            <button type="button"
+                                class="btn btn-success btn-sm ">Sudah Checkin
+                            </button>
+                        </td>
+                        <td>
+                            <a href="#"><button type="button" class="btn btn-success active">Checkin</button></a>
+
+                            <a href="/resepsionis/dashboard/hapus/{{ $r->id_reservasi }}"><button type="button"
+                                class="btn btn-danger active">Batal Pesan</button></a>
                         </td>
                     </tr>
                 @endforeach

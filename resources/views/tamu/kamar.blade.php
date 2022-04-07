@@ -11,7 +11,7 @@
             <div class="card" style=" width:100%; height:100%;">
                 <img class="card-img-top" src="{{ ("/img/").$kd->image }}" alt="" style="width:500px;" alt="Card image">
                 <div class="card-body">
-                  <p class="card-text">{{ $kd->jumlah_kamar }} Ruangan.</p>
+                  <p class="card-text">{{ $kd->jumlah_kamar }} Ruangan</p>
                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Lihat Fasilitas
                   </button>

@@ -24,8 +24,7 @@
                         <td>
                             <a href="/tamu/cetak_bukti_pemesanan/{{ $r->id_reservasi }}"><button type="button" class="btn btn-success active">Cetak</button></a>
 
-                            <a href="/tamu/bukti_pemesanan/hapus/{{ $r->id_reservasi }}"><button type="button"
-                                    class="btn btn-danger active">Hapus Pesanan</button></a>
+
                         </td>
                     </tr>
                 @endforeach

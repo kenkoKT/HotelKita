@@ -15,7 +15,7 @@ class CetakPDFControllers extends Controller
     public function index()
     {
 
-        $id = auth()->user()->id;
+        $id = auth()->user()->id;   
 
         // $reservasi = DB::where('nama')
         $reservasi = DB::table('reservasi')->where('user_id', $id)->get();

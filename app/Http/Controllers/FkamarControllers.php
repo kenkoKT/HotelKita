@@ -48,11 +48,6 @@ class FkamarControllers extends Controller
 	// ]);
     $data = Fkamar::create($request->all());
 
-    if($request->hasFile('gambar')){
-        $request->file('gambar')->move('fotohotel/', $request->file('gambar')->getClientOriginalName());
-        $data -> gambar = $request->file('gambar')->getClientOriginalName();
-        $data ->save();
-    }
 	// alihkan halaman ke halaman pegawai
 	return redirect('admin/fkamar/dashboard');
     }
@@ -95,7 +90,6 @@ class FkamarControllers extends Controller
 	DB::table('fkamar')->where('id_fkamar',$request->id)->update([
         'tipe_kamar' => $request->tipe_kamar,
         'nama_fasilitas' => $request->nama_fasilitas,
-        'image' => $request->image,
 	]);
 	// alihkan halaman ke halaman kamar
 	return redirect('admin/fkamar/dashboard');

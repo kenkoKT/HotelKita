@@ -11,6 +11,5 @@ class Fkamar extends Model
     protected $fillable = [
         'tipe_kamar',
 		'nama_fasilitas',
-        'image',
     ];
 }
